@@ -220,6 +220,7 @@ img {
   padding: 24px 0;
   color: var(--title-dark-color);
   font-weight: 500;
+  display: block;
 }
 .header-list-link:hover,
 .header-list-link:focus {
