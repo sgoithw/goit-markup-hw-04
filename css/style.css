@@ -327,7 +327,8 @@ img {
   cursor: pointer;
 }
 
-.footer-list-social-link:hover {
+.footer-list-social-link:hover,
+.footer-list-social-link:focus {
   background-color: var(--social-btn-hover-bg-color);
   transition: background-color var(--default-transition);
 }
@@ -353,6 +354,7 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition-delay: 200ms;
 }
 .modal {
   width: 408px;
@@ -363,8 +365,12 @@ img {
     0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
-  margin-top: 80px;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(0) scale(1);
+  transition: transform 450ms linear;
+}
+.backdrop.is-hidden .modal {
+  transform: translateX(-50%) translateY(-50%) rotate(1000deg) scale(0.01);
 }
 .modal-close-btn {
   position: absolute;
@@ -401,7 +407,7 @@ img {
       var(--hero-overlay-bg-color)
     ),
     url(../images/people-office.jpg) center no-repeat;
-  background-size: cover;
+  background-size: 1440px;
 }
 
 .hero {
@@ -583,12 +589,14 @@ img {
 .customers-list-icon {
   fill: var(--company-icon-bg-color);
 }
-.customers-list-link:hover {
+.customers-list-link:hover,
+.customers-list-link:focus {
   border-color: var(--active-color);
   transition: border-color var(--default-transition);
 }
 
-.customers-list-link:hover .customers-list-icon {
+.customers-list-link:hover .customers-list-icon,
+.customers-list-link:focus .customers-list-icon {
   fill: var(--active-color);
   transition: fill var(--default-transition);
 }
@@ -612,9 +620,15 @@ img {
   margin-bottom: 72px;
 }
 
-.portfolio-filter-item {
+.portfolio-filter-item > button {
+  box-shadow: none;
 }
-
+.portfolio-filter-item > button:hover,
+.portfolio-filter-item > button:focus {
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
+    0px 2px 1px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
+  transition: box-shadow var(--default-transition);
+}
 .portfolio-projects-list {
   display: flex;
   flex-wrap: wrap;
@@ -632,7 +646,8 @@ img {
   width: calc((100% - 24px * 2) / 3);
   box-shadow: none;
 }
-.portfolio-projects-item:hover {
+.portfolio-projects-item:hover,
+.portfolio-projects-item:focus {
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
@@ -655,7 +670,8 @@ img {
   will-change: transform;
   transition: transform var(--default-transition);
 }
-.protfolio-thumb:hover .portfolio-projects-item-overlay {
+.portfolio-projects-item:hover .portfolio-projects-item-overlay,
+.portfolio-projects-item:focus .portfolio-projects-item-overlay {
   transform: translateY(0);
 }
 .portfolio-projects-item-overlay-text {
